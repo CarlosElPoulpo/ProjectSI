@@ -49,3 +49,5 @@
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
 
+#JetBrain PHPStorm
+/.idea/
