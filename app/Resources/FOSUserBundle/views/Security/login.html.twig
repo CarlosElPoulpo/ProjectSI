@@ -3,26 +3,56 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
-
-    <h1>{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</h1>
-
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
-
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
-
-    <a href="{{ path('fos_user_resetting_request') }}">{{ 'resetting.forgot_password'|trans }}</a>
+    <div class="panel panel-default col-sm-6 col-sm-offset-3">
+        <div class="panel-body">
+                <div>
+                    <div class="row">
+                        <h2><strong>Transcode</strong> {{ 'security.login.title'|trans }}</h2>
+                        <p>{{ 'security.login.top_line'|trans }}</p>
+                        {% if error %}
+                            <div class="alert alert-dismissible alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>{{ error.messageKey|trans(error.messageData, 'security') }}</strong>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="row">
+                        <form role="form" action="{{ path("fos_user_security_check") }}" method="post">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                                <div class="form-group label-floating">
+                                    <label class="control-label"
+                                           for="username">{{ 'security.login.username'|trans }}</label>
+                                    <input id="username" class="form-control" name="_username"
+                                           value="{{ last_username }}" type="text" required="required">
+                                </div>
+                                <div class="form-group label-floating">
+                                    <label class="control-label"
+                                           for="password">{{ 'security.login.password'|trans }}</label>
+                                    <input id="password" class="form-control" name="_password" type="password"
+                                           required="required">
+                                </div>
+                                <div class="text-center">
+                                    <input class="btn teal white-text" type="submit" id="_submit" name="_submit"
+                                           value="{{ 'security.login.submit'|trans }}"/>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="text-center">
+                    <h3>{{ 'security.login.choosen_menu'|trans }}</h3>
+                    <div>
+                        <a class="btn btn-facebook white-text"
+                           href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">
+                            <i class="fa fa-facebook"></i> Facebook
+                        </a>
+                        <a class="btn btn-google white-text"
+                           href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
+                            <i class="fa fa-google-plus"></i> Google Plus
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock fos_user_content %}

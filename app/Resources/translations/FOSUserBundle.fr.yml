@@ -15,6 +15,9 @@ security:
         password: 'Mot de passe'
         remember_me: 'Se souvenir de moi'
         submit: Connexion
+        top_line: "Entrer votre nom d'utilisateur et votre mot de passe pour vous connecter"
+        title: 'Connexion à notre site'
+        choosen_menu: "... ou connectez-vous avec"
 profile:
     show:
         username: 'Nom d''utilisateur'
@@ -38,6 +41,8 @@ registration:
     email:
         subject: 'Bienvenue %username% !'
         message: "Bonjour %username% !\n\nPour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%\n\nCordialement,\nL'équipe.\n"
+    top_line: "Renseigner les champs ci-dessous pour vous inscrire sur ntore site"
+    choosen_menu: "... ou enregistrez-vous avec"
 resetting:
     forgot_password: 'Mot de passe oublié ?'
     password_already_requested: 'Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.'

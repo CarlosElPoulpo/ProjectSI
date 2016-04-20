@@ -1,9 +1,75 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<h1>{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</h1>
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+<div class="panel panel-default col-sm-6 col-sm-offset-3">
+    <div class="panel-body">
+        <div>
+            <div class="row">
+                <h2><strong>Transcode</strong> {{ 'layout.register'|trans({}, 'FOSUserBundle') }}</h2>
+                <p>{{ 'security.login.top_line'|trans }}</p>
+            </div>
+            <div class="row">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                <div class="form-group label-floating">
+                    {{ form_label(form.email, 'form.email'|trans, {'attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                {% for errorItem in form.email.vars.errors %}
+                    <div class="alert alert-dismissible alert-danger">
+                        <button  type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Too late !!!</strong> {{ errorItem.message }}
+                    </div>
+                {% endfor %}
+
+                <div class="form-group label-floating">
+                    {{ form_label(form.username, 'form.username'|trans, {'attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                {% for errorItem in form.username.vars.errors %}
+                    <div class="alert alert-dismissible alert-danger">
+                        <button  type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Too late !!!</strong> {{ errorItem.message }}
+                    </div>
+                {% endfor %}
+
+                <div class="form-group label-floating">
+                    {{ form_label(form.plainPassword.first, 'form.password'|trans, {'attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+                {% for errorItem in form.plainPassword.first.vars.errors %}
+                    <div class="alert alert-dismissible alert-danger">
+                        <button  type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Oh snap !!!</strong> {{ errorItem.message }}
+                    </div>
+                {% endfor %}
+
+                <div class="form-group label-floating">
+                    {{ form_label(form.plainPassword.second, 'form.password_confirmation'|trans, {'attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+                </div>
+
+               <!-- -->
+                {{ form_rest(form) }}
+                <div class="text-center">
+                    <input class="btn teal white-text" type="submit" value="{{ 'registration.submit'|trans }}"/>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
     </div>
-{{ form_end(form) }}
+    <div class="row">
+        <div class="text-center">
+            <h3>{{ 'registration.choosen_menu'|trans }}</h3>
+            <div class="social-login-buttons">
+                <a class="btn btn-facebook white-text"
+                   href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">
+                    <i class="fa fa-facebook"></i> Facebook
+                </a>
+                <a class="btn btn-google white-text"
+                   href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
+                    <i class="fa fa-google-plus"></i> Google Plus
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

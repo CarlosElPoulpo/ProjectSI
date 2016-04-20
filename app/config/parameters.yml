@@ -1,0 +1,16 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: transcode
+    database_user: root
+    database_password: null
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: transcode.supinfo@gmail.com
+    mailer_password: supinfo2016
+    facebook_client_id: '1746058612296568'
+    facebook_client_secret: 9f9422f3ba811538bcd10fe8a8daf642
+    google_client_id: 133818818945-3vem5v71gfm0n1es2v6tv5ik3p1bmc7p.apps.googleusercontent.com
+    google_client_secret: onOIU28iDTXZeWjj-Izj-644
+    secret: 55178650fef9ee21a151f07bcdfaeeb33566a6c9

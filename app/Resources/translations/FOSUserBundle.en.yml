@@ -16,6 +16,9 @@ security:
         password: Password
         remember_me: 'Remember me'
         submit: 'Log in'
+        top_line: 'Enter your username and password to log on'
+        title: 'Login to our site'
+        choosen_menu: "... or login with"
 
 profile:
     show:
@@ -48,7 +51,8 @@ registration:
 
             Regards,
             the Team.
-
+    top_line: "Enter all the fields for register you on our site"
+    choosen_menu: "... or register with"
 resetting:
     forgot_password: 'Forgot your password ?'
     password_already_requested: 'The password for this user has already been requested within the last 24 hours.'
@@ -78,6 +82,7 @@ layout:
     register: Register
     logged_in_as: 'Logged in as %username%'
     profile: 'Profile'
+
 form:
     group_name: 'Group name'
     username: Username

@@ -3,5 +3,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+    <div class="alert alert-warning">
+        <strong>Well done!</strong> <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+        <a class="btn btn-flat white black-text" href="{{ path("homepage") }}">Home</a>.
+    </div>
 {% endblock fos_user_content %}

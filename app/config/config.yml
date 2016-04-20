@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
@@ -65,8 +65,6 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    encryption: "%mailer_encryption%"
-    auth_mode: "%mailer_auth_mode%"
     spool:     { type: memory }
 
 fos_user:
@@ -84,3 +82,35 @@ fos_user:
             from_email:
                 address: transcode.supinfo@gmail.com
                 sender_name: Transcode Registration
+
+hwi_oauth:
+    firewall_names: [main]
+    connect:
+        account_connector: app.provider.oauth
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook: facebook_id
+            google: google_id
+    resource_owners:
+        # Facebook Access
+        facebook:
+            type:                facebook
+            client_id:           "%facebook_client_id%" #1746058612296568
+            client_secret:       "%facebook_client_secret%" #9f9422f3ba811538bcd10fe8a8daf642
+            scope:               "email"
+            infos_url:           "https://graph.facebook.com/me?fields=id,name,email,picture.type(large)"
+            options:
+                display: page
+            paths:
+                email: email
+        # Google Access
+        google:
+            type:                google
+            client_id:           "%google_client_id%" #133818818945-3vem5v71gfm0n1es2v6tv5ik3p1bmc7p.apps.googleusercontent.com
+            client_secret:       "%google_client_secret%" #onOIU28iDTXZeWjj-Izj-644
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            options:
+                display: popup
+            paths:
+                email: email
