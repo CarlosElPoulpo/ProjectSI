@@ -32,7 +32,7 @@ module.exports = function(grunt){
             },
             dist: {
                 files: {
-                    'web/css/app.min.css': ['web/css/custom/css/materialize-color.css', 'web/css/bootstrap-material/bootstrap.min.css', 'web/css/bootstrap-material/bootstrap-material-design.min.css', 'web/css/bootstrap-material/ripples.min.css', 'web/css/font-awesome-4.6.1/font-awesome.min.css','web/css/custom/css/transcode.css']
+                    'web/css/app.min.css': ['web/css/bootstrap-material/materialize-color.css', 'web/css/bootstrap-material/bootstrap.min.css', 'web/css/bootstrap-material/bootstrap-material-design.min.css', 'web/css/bootstrap-material/ripples.min.css', 'web/css/font-awesome-4.6.1/font-awesome.min.css','web/css/custom/css/*.css']
                 }
             }
         },
