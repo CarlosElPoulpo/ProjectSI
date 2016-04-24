@@ -8,18 +8,21 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+
     /**
-     * @Route("/", name="homepage")
+     * @Route("/overview", name="overview")
      */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+    public function overviewAction(){
+        return $this->render('app/default/overview.html.twig');
     }
 
-    public function menuAction(){
-        return $this->render('elements/menu.html.twig');
+    public function topmenuAction()
+    {
+        return $this->render('app/elements/topmenu.html.twig');
+    }
+
+    public function sidemenuAction()
+    {
+        return $this->render('app/elements/sidemenu.html.twig');
     }
 }

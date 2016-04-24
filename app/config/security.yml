@@ -21,6 +21,7 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+                default_target_path: /app/overview
             oauth:
                 resource_owners:
                     facebook:           "/login/check-facebook"
@@ -38,6 +39,7 @@ security:
             security: false
 
     access_control:
+        - { path: ^/app/, role: ROLE_USER }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }

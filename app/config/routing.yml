@@ -1,9 +1,23 @@
+site:
+    resource: "@SiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    prefix:   /app
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_profile_show:
+    path: /app/profile
+    defaults: { _controller: FOSUserBundle:Profile:show}
+
+fos_user_profile_edit:
+    path: /app/edit
+    defaults: { _controller: FOSUserBundle:Profile:edit}
 
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
