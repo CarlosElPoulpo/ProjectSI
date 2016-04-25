@@ -19,16 +19,13 @@ class JobController extends Controller
     {
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
-        dump($job);
         if ($form->handleRequest($request)->isValid()) {
-            dump($job);
             $user = $this->getUser();
             $job->setName($job->generateName());
             $job->setUser($user);
             $job->setFinish(false);
             $em = $this->getDoctrine()->getManager();
             $em->persist($job);
-            dump($job);
             $em->flush();
 
             $request->getSession()->getFlashBag()->add('notice', 'Job soumis.');
