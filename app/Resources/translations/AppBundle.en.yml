@@ -1,0 +1,18 @@
+topmenu:
+    overview: "Overview"
+    settings: "Settings"
+    profile: "Profile"
+    logout: "Log out"
+    search: "Search..."
+
+sidebar:
+    newjob: "New transcoding"
+    historic: "History"
+    analytics: "Analytics"
+
+newjob:
+    page_h1: "Submit a new job"
+    form:
+        file: "Select file to convert"
+        targetformat: "Target format"
+        submit: "Submit"

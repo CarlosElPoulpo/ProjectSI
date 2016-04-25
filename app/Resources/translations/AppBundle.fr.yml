@@ -1,5 +1,18 @@
 topmenu:
-    overview:
-    settings:
-    profile:
-    logout
+    overview: "Overview"
+    settings: "Réglages"
+    profile: "Profil"
+    logout: "Déconnexion"
+    search: "Recherche..."
+
+sidebar:
+    newjob: "Nouveaux job"
+    historic: "Historique"
+    analytics: "Statistiques"
+
+newjob:
+    page_h1: "Soumettre un nouveau travail"
+    form:
+        file: "Fichier à convertir"
+        targetformat: "Format cible"
+        submit: "Soumettre"
