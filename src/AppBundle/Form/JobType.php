@@ -18,9 +18,9 @@ class JobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('video', VideoType::class, array('label' => 'newjob.form.file', 'translation_domain' => 'AppBundle'))
-            ->add('targetFormat', ChoiceType::class, array('choices'  => array('.mp3' => 'mp3','.WMA' => 'WMA'), 'label' => 'newjob.form.targetformat', 'translation_domain' => 'AppBundle', 'empty_data'  => null))
-            ->add('save', SubmitType::class, array('label' => 'newjob.form.submit', 'translation_domain' => 'AppBundle'))
+            ->add('video', VideoType::class, array('label' => 'job.attr.video', 'translation_domain' => 'AppBundle'))
+            ->add('targetformat', ChoiceType::class, array('choices'  => array('.mp3' => 'mp3','.WMA' => 'WMA'), 'label' => 'job.attr.target_format', 'translation_domain' => 'AppBundle', 'empty_data'  => null))
+            ->add('save', SubmitType::class, array('label' => 'job.submit.button', 'translation_domain' => 'AppBundle'))
         ;
     }
     

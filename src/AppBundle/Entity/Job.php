@@ -27,35 +27,42 @@ class Job
     protected $name;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="finishDate", type="date", nullable=true)
-     * @Assert\DateTime()
+     * @ORM\PrePersist
      */
-    protected $finishDate;
+    public function generateName()
+    {
+        $this->setName("Job-".(string)uniqid());
+    }
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="launchDate", type="date", nullable=true)
+     * @ORM\Column(name="finishdate", type="date", nullable=true)
+     * @Assert\DateTime()
      */
-    protected $launchDate;
+    protected $finishdate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="submitDate", type="date", nullable=true)
+     * @ORM\Column(name="launchdate", type="date", nullable=true)
+     */
+    protected $launchdate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="submitdate", type="date", nullable=true)
      * @Assert\DateTime()
      */
-    protected $submitDate;
+    protected $submitdate;
 
     /**
      * @ORM\PrePersist
-     * @ORM\PreUpdate
      */
-    public function createDate()
+    public function submitDate()
     {
-        $this->setSubmitDate(new \DateTime());
+        $this->setSubmitdate(new \DateTime());
     }
 
     /**
@@ -68,10 +75,10 @@ class Job
     /**
      * @var string
      *
-     * @ORM\Column(name="targetFormat", type="string", length=100, nullable=False)
+     * @ORM\Column(name="targetformat", type="string", length=100, nullable=False)
      * @Assert\Length(min=3)
      */
-    protected $targetFormat;
+    protected $targetformat;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Video", cascade={"persist"})
@@ -120,75 +127,75 @@ class Job
     }
 
     /**
-     * Set finishDate
+     * Set finishdate
      *
-     * @param \DateTime $finishDate
+     * @param \DateTime $finishdate
      *
      * @return Job
      */
-    public function setFinishDate($finishDate)
+    public function setFinishdate($finishdate)
     {
-        $this->finishDate = $finishDate;
+        $this->finishdate = $finishdate;
 
         return $this;
     }
 
     /**
-     * Get finishDate
+     * Get finishdate
      *
      * @return \DateTime
      */
-    public function getFinishDate()
+    public function getFinishdate()
     {
-        return $this->finishDate;
+        return $this->finishdate;
     }
 
     /**
-     * Set launchDate
+     * Set launchdate
      *
-     * @param \DateTime $launchDate
+     * @param \DateTime $launchdate
      *
      * @return Job
      */
-    public function setLaunchDate($launchDate)
+    public function setLaunchdate($launchdate)
     {
-        $this->launchDate = $launchDate;
+        $this->launchdate = $launchdate;
 
         return $this;
     }
 
     /**
-     * Get launchDate
+     * Get launchdate
      *
      * @return \DateTime
      */
-    public function getLaunchDate()
+    public function getLaunchdate()
     {
-        return $this->launchDate;
+        return $this->launchdate;
     }
 
     /**
-     * Set submitDate
+     * Set submitdate
      *
-     * @param \DateTime $submitDate
+     * @param \DateTime $submitdate
      *
      * @return Job
      */
-    public function setSubmitDate($submitDate)
+    public function setSubmitdate($submitdate)
     {
-        $this->submitDate = $submitDate;
+        $this->submitdate = $submitdate;
 
         return $this;
     }
 
     /**
-     * Get submitDate
+     * Get submitdate
      *
      * @return \DateTime
      */
-    public function getSubmitDate()
+    public function getSubmitdate()
     {
-        return $this->submitDate;
+        return $this->submitdate;
     }
 
     /**
@@ -216,27 +223,27 @@ class Job
     }
 
     /**
-     * Set targetFormat
+     * Set targetformat
      *
-     * @param string $targetFormat
+     * @param string $targetformat
      *
      * @return Job
      */
-    public function setTargetFormat($targetFormat)
+    public function setTargetformat($targetformat)
     {
-        $this->targetFormat = $targetFormat;
+        $this->targetformat = $targetformat;
 
         return $this;
     }
 
     /**
-     * Get targetFormat
+     * Get targetformat
      *
      * @return string
      */
-    public function getTargetFormat()
+    public function getTargetformat()
     {
-        return $this->targetFormat;
+        return $this->targetformat;
     }
 
     /**
@@ -285,10 +292,5 @@ class Job
     public function getUser()
     {
         return $this->user;
-    }
-
-    public function generateName()
-    {
-        return "Job-".(string)$this->getId();
     }
 }

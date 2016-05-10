@@ -1,0 +1,21 @@
+{% extends ':app:base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block page_h1 %}
+        {{ 'job.submit.page_title'|trans }}
+    {% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'method': 'post', 'action': path('job_submit')}) }}
+    <div class="form-group">
+        {{ form_label(form.video.file, 'job.attr.video'|trans, {'attr': {'class': 'control-label'}}) }}
+        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+        {{ form_widget(form.video.file, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.targetformat, 'job.attr.target_format'|trans, {'attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.targetformat, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    {{ form_widget(form.save, {'attr': {'class': 'btn teal white-text'}}) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock %}

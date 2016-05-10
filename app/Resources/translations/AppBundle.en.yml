@@ -16,3 +16,21 @@ newjob:
         file: "Select file to convert"
         targetformat: "Target format"
         submit: "Submit"
+
+listoldjob:
+    page_h1: "Jobs historic"
+    table:
+        button:
+            details: "Details"
+
+job:
+    attr:
+        id: "Id"
+        name: "Name"
+        finish_date: "End date"
+        submit_date: "Submit date"
+        launch_date: "Launch date"
+        target_format: "Target format"
+        video: "Video"
+        user: "User"
+        finish: "Finish"

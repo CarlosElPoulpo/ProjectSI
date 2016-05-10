@@ -1,0 +1,38 @@
+{% extends ':app:base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block page_h1 %}
+    {{ 'job.list.page_title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <table class="table table-inverse">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'job.attr.name'|trans }}</th>
+            <th>{{ 'job.attr.target_format'|trans }}</th>
+            <th>{{ 'job.attr.video'|trans }}</th>
+            <th>{{ 'job.attr.submit_date'|trans }}</th>
+            <th>{{ 'job.attr.launch_date'|trans }}</th>
+            <th>{{ 'job.attr.finish_date'|trans }}</th>
+            <th>{{ 'job.attr.finish'|trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for job in jobs %}
+        <tr>
+            <th scope="row">{{ job.id }}</th>
+            <td>{{ job.name }}</td>
+            <td>{{ job.targetformat }}</td>
+            <td>{{ job.video }}</td>
+            <td>{{ job.submitdate|date('d/m/Y') }}</td>
+            <td>{{ job.launchdate|date('d/m/Y') }}</td>
+            <td>{{ job.finishdate|date('d/m/Y') }}</td>
+            <td>{{ job.finish }}</td>
+            <td><a class="teal-text" href="{{ path('job_details', {'id': job.id}) }}">{{ 'job.list.table.details'|trans }}</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
