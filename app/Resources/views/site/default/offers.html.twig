@@ -1,0 +1,30 @@
+{% extends ':site:base.html.twig' %}
+{% trans_default_domain 'SiteBundle' %}
+{% block body %}
+    <h1 >{{ 'offer.offer'|trans }}</h1>
+    <div class="row row-table ">
+
+        <div class="col-xs-2 col-sm-6 col-md-8 col-lg-4 teal">
+            <h2> <strong>{{ 'offer.offer_basic_title'|trans }}</strong> </h2>
+            <blockquote>
+            <p class="lead text-center">{{ 'offer.offer_basic_descritpion'|trans }}</p>
+            </blockquote>
+        </div>
+        <div class="col-xs-2 col-sm-6 col-md-8 col-lg-4 red">
+            <h2><strong>{{ 'offer.offer_prenium_title'|trans }}</strong></h2>
+            <blockquote>
+            <p class="lead text-center">{{ 'offer.offer_prenium_description'|trans }}</p>
+            </blockquote>
+        </div>
+        <div class="col-xs-2 col-sm-6 col-md-8 col-lg-4 blue">
+            <h2><strong>{{ 'offer.offer_entreprise_title'|trans }}</strong></h2>
+            <blockquote>
+            <p class="lead text-center">{{ 'offer.offer_entreprise_description'|trans }}</p>
+            </blockquote>
+        </div>
+        <div class="green">
+            <p class="lead text-center">{{ 'offer.offer_performance'|trans }}</p>
+        </div>
+    </div>
+{% endblock %}
+

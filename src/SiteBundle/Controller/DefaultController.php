@@ -52,10 +52,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route ("offer", name="offer")
+     * @Route ("offers", name="offers")
      */
-    public function offerAction(){
-        return $this->render('site/offer/offer.html.twig');
+    public function offersAction(){
+        return $this->render('site/default/offers.html.twig');
     }
 
     /**
@@ -99,12 +99,26 @@ class DefaultController extends Controller
         return $this->render('site/default/operation.html.twig');
     }
 
+    /**
+     * @Route ("jobs", name="jobs")
+     */
+    public function jobsAction(){
+        return $this->render('site/default/jobs.html.twig');
+    }
 
+    /**
+     * @Route ("events", name="events")
+     */
+    public function eventsAction(){
+        return $this->render('site/default/events.html.twig');
+    }
 
-
-
-
-
+    /**
+     * @Route ("customers", name="customers")
+     */
+    public function customersAction(){
+        return $this->render('site/default/customers.html.twig');
+    }
 
     public function menuAction(){
         return $this->render(':site/elements:menu.html.twig');
