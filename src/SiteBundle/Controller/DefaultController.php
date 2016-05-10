@@ -101,6 +101,61 @@ class DefaultController extends Controller
         return $this->render('site/default/privacy.html.twig');
     }
 
+    /**
+     * @Route ("offer", name="offer")
+     */
+    public function offerAction(){
+        return $this->render('site/offer/offer.html.twig');
+    }
+
+    /**
+     * @Route ("support", name="support")
+     */
+    public function supportAction(){
+        return $this->render('site/default/support.html.twig');
+    }
+
+    /**
+     * @Route ("get_started", name="get_started")
+     */
+    public function getStartedAction(){
+        return $this->render('site/default/get_started.html.twig');
+    }
+
+    /**
+     * @Route ("project", name="project")
+     */
+    public function projectdAction(){
+        return $this->render('site/default/project.html.twig');
+    }
+    /**
+     * @Route ("company", name="company")
+     */
+    public function companydAction(){
+        return $this->render('site/default/company.html.twig');
+    }
+
+    /**
+     * @Route ("architecture_network", name="architecture_network")
+     */
+    public function architectureAction(){
+        return $this->render('site/default/architecture_network.html.twig');
+    }
+
+    /**
+     * @Route ("operation", name="operation")
+     */
+    public function operationAction(){
+        return $this->render('site/default/operation.html.twig');
+    }
+
+
+
+
+
+
+
+
     public function menuAction(){
         return $this->render(':site/elements:menu.html.twig');
     }

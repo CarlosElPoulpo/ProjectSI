@@ -10,6 +10,9 @@ group:
         created: 'The group has been created'
         deleted: 'The group has been deleted'
 
+test:
+    test_test: "hello"
+
 security:
     login:
         username: Username

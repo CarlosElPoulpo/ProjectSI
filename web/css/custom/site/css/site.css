@@ -12,3 +12,11 @@ body {
 .btn-google {
   background-color: #DD4B39;
 }
+.row-table {
+  diplay: table;
+}
+.row-table [class*="col-"] {
+  float: none;
+  display: table-cell;
+  vertical-align: top;
+}

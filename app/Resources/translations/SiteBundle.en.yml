@@ -1,0 +1,9 @@
+offer:
+  offer : ' Offer !'
+  offer_basic_title: ' Offre Basique ! '
+  offer_basic_descritpion : ' 1€ pour une heure de temps de convertion '
+  offer_prenium_title : 'Offre Prenium !'
+  offer_prenium_description : '  Forfait de convertion illimité pour 5000€ par mois '
+  offer_entreprise_title : ' Offre Entreprise !'
+  offer_entreprise_description: ' Forfait sur-mesure pour le temps de convertion a discuter avec nos commerial '
+  offer_performance: "Nos développeurs ont tout mis en œuvre pour vous apporter ce qu'il y a de mieux : votre serveur Web et votre espace Web sont désormais sur la même plate-forme. La mise en commun de ces supports de stockage vous permet de bénéficier d'une vitesse accrue et de meilleures performances pour vos projets Web."

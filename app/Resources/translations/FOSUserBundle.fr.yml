@@ -9,6 +9,8 @@ group:
         updated: 'Le groupe a été mis à jour'
         created: 'Le groupe a été créé'
         deleted: 'Le groupe a été supprimé'
+test:
+    test_test: "coucou"
 security:
     login:
         username: 'Nom d''utilisateur'
