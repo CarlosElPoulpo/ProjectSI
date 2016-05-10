@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("", name="homepage")
      */
     public function indexAction()
     {
@@ -18,7 +18,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/team", name="teampage")
+     * @Route("team", name="team")
      */
     public function teamAction(){
         $emma = new TeamMember(
@@ -49,6 +49,56 @@ class DefaultController extends Controller
         );
         $teammembers = array($emma, $nathan, $laurene, $maxime);
         return $this->render('site/default/team.html.twig', ['teammembers'=>$teammembers]);
+    }
+
+
+    /**
+     * @Route("contact", name="contact")
+     */
+    public function contactAction(){
+        return $this->render('site/default/contact.html.twig');
+    }
+
+    /**
+     * @Route("partners", name="partners")
+     */
+    public function partnersAction(){
+        return $this->render('site/default/partners.html.twig');
+    }
+
+    /**
+     * @Route("FAQ", name="faq")
+     */
+    public function FAQAction(){
+        return $this->render('site/default/faq.html.twig');
+    }
+
+    /**
+     * @Route("terms-of-service", name="terms_of_service")
+     */
+    public function termsofserviceAction(){
+        return $this->render('site/default/termsofservice.html.twig');
+    }
+
+    /**
+     * @Route("security", name="security")
+     */
+    public function securityAction(){
+        return $this->render('site/default/security.html.twig');
+    }
+
+    /**
+     * @Route("policies", name="policies")
+     */
+    public function policiesAction(){
+        return $this->render('site/default/policies.html.twig');
+    }
+
+    /**
+     * @Route("privacy", name="privacy")
+     */
+    public function privacyAction(){
+        return $this->render('site/default/privacy.html.twig');
     }
 
     /**
