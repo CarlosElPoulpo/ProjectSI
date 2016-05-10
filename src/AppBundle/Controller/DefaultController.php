@@ -25,4 +25,5 @@ class DefaultController extends Controller
     {
         return $this->render('app/elements/sidemenu.html.twig');
     }
+    
 }

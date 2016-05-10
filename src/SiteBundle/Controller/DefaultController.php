@@ -16,6 +16,16 @@ class DefaultController extends Controller
         return $this->render('site/default/index.html.twig');
     }
 
+    /**
+     * @Route ("offer", name="offer")
+     */
+    public function priceAction(){
+        return $this->render('site/offer/offer.html.twig');
+    }
+
+
+
+    
     public function menuAction(){
         return $this->render(':site/elements:menu.html.twig');
     }
