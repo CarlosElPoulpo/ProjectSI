@@ -105,7 +105,7 @@ class DefaultController extends Controller
      * @Route ("offer", name="offer")
      */
     public function offerAction(){
-        return $this->render('site/offer/offer.html.twig');
+        return $this->render('');
     }
 
     /**

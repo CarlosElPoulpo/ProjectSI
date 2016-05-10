@@ -11,12 +11,12 @@
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ path('homepage') }}">Home</a></li>
-                <li><a href="#">Menu 2</a></li>
-                <li><a href="{{ path('team') }}">Team</a></li>
-                <li><a href="{{ path('partners') }}">Partners</a></li>
-                <li><a href="{{ path('contact') }}">Contact</a></li>
-                <li class="dropdown">
+                <li><a href="{{ path('get_started') }}">Get started</a></li>
+                <li><a href="{{ path('offer') }}">{{ 'offer.offer'|trans({}, 'SiteBundle') }}</a></li>
+                <li><a href="{{ path('project') }}">Project</a></li>
+                <li><a href="{{ path('architecture_network') }}">Network Architecture</a></li>
+                <li><a href="{{ path('operation') }}">Operation Transcode</a></li>
+                <!--<li class="dropdown">
                     <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Menu 4<b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -26,21 +26,12 @@
                         <li><a href="#">Menu 4.3</a></li>
                         <li><a href="#">Menu 4.2</a></li>
                     </ul>
-                </li>
-
-                <li><a href="{{ path('support') }}">Support</a></li>
-                <li><a href="{{ path('offer') }}">{{ 'offer.offer'|trans({}, 'SiteBundle') }}</a></li>
-                <li><a href="{{ path('teampage') }}">Equipe</a></li>
-                <li><a href="{{ path('get_started') }}">Get started</a></li>
-                <li><a href="{{ path('project') }}">Project</a></li>
-                <li><a href="{{ path('company') }}">Transcode company</a></li>
-                <li><a href="{{ path('architecture_network') }}">Architecture Network</a></li>
-                <li><a href="{{ path('operation') }}">Operation Transcode</a></li>
+                </li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <li><a>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
-                    <li><a href="{{ path('overview') }}">Transcode App</a></li>
+                    <li><a href="{{ path('overview') }}"><strong>Transcode</strong> App</a></li>
                 {% else %}
                     <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
                     <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
