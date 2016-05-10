@@ -1,8 +1,9 @@
 {% trans_default_domain 'AppBundle' %}
 <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
-        <li class="active"><a href="{{ path('submitjob') }}">{{ 'sidebar.newjob'|trans }}</a></li>
-        <li><a href="#">{{ 'sidebar.historic'|trans }}</a></li>
+        <li><a href="{{ path('overview') }}">{{ 'topmenu.overview'|trans }}</a></li>
+        <li><a href="{{ path('job_submit') }}">{{ 'sidebar.newjob'|trans }}</a></li>
+        <li><a href="{{ path('job_list') }}">{{ 'sidebar.historic'|trans }}</a></li>
     </ul>
     <ul class="nav nav-sidebar">
         <li><a href="#">{{ 'sidebar.analytics'|trans }}</a></li>

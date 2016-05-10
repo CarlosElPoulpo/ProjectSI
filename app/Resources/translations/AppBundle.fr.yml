@@ -10,9 +10,23 @@ sidebar:
     historic: "Historique"
     analytics: "Statistiques"
 
-newjob:
-    page_h1: "Soumettre un nouveau travail"
-    form:
-        file: "Fichier à convertir"
-        targetformat: "Format cible"
-        submit: "Soumettre"
+job:
+    attr:
+        id: "Id"
+        name: "Nom"
+        finish_date: "Date de fin"
+        submit_date: "Date de soumission"
+        launch_date: "Date de lancement"
+        target_format: "Format cible"
+        video: "Vidéo"
+        user: "Utilisateur"
+        finish: "Terminé"
+    list:
+        page_title: "Hitorique des travails"
+        table:
+            details: "Détails"
+    details:
+        page_title:
+    submit:
+        page_title: "Soumettre un nouveau travail"
+        button: "Soumettre"

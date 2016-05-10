@@ -36,6 +36,22 @@ class Video
      */
     private $file;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="format", type="string", length=100, nullable=False)
+     * @Assert\Length(min=3)
+     */
+    protected $format;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="size", type="integer", nullable=False)
+     * @Assert\Length(min=3)
+     */
+    protected $size;
+
     private $temp;
 
     /**
@@ -70,7 +86,9 @@ class Video
         if (null !== $this->file) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->url = $filename.'.'.$this->file->guessExtension();
+            $this->format = $this->file->guessExtension();
+            $this->size = filesize($this->file);
+            $this->url = $filename.'.'.$this->format;
         }
     }
 
@@ -127,7 +145,7 @@ class Video
 
     public function getUploadDir()
     {
-        return 'uploads/videos';
+        return 'uploads/fortranscode/videos';
     }
 
     protected function getUploadRootDir()
@@ -168,5 +186,58 @@ class Video
     public function getUrl()
     {
         return $this->url;
+    }
+
+    public function __toString()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set format
+     *
+     * @param string $format
+     *
+     * @return Video
+     */
+    public function setFormat($format)
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    /**
+     * Get format
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Set size
+     *
+     * @param integer $size
+     *
+     * @return Video
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return integer
+     */
+    public function getSize()
+    {
+        return $this->size;
     }
 }
