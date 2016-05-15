@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Bill;
 use AppBundle\Entity\Job;
 use AppBundle\Entity\Video;
 use AppBundle\Form\JobType;
@@ -30,7 +31,7 @@ class JobController extends Controller
             $request->getSession()->getFlashBag()->add('notice', 'Job soumis.');
 
             #return $this->redirectToRoute('overview');
-            #return $this->redirect($this->generateUrl('', array('id' => $job->getId())));
+            #return $this->redirect($this->generateUrl('job_details', array('id' => $job->getId())));
         }
         return $this->render('app/job/submit.html.twig', array('form'=> $form->createView()));
     }

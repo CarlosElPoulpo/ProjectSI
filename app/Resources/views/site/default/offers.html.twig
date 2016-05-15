@@ -1,29 +1,66 @@
 {% extends ':site:base.html.twig' %}
 {% trans_default_domain 'SiteBundle' %}
 {% block body %}
-    <h1 >{{ 'offer.offer'|trans }}</h1>
-    <div class="row row-table ">
-
-        <div class="col-xs-2 col-sm-6 col-md-8 col-lg-4 teal">
-            <h2> <strong>{{ 'offer.offer_basic_title'|trans }}</strong> </h2>
-            <blockquote>
-            <p class="lead text-center">{{ 'offer.offer_basic_descritpion'|trans }}</p>
-            </blockquote>
+    <div class="text-center">
+        <h1 class="blue-text"><strong>Pricing Guide</strong></h1>
+        <h3 class="grey-text">Transcode is free to use for as long as you want, for teams of all sizes.</h3>
+    </div>
+    <br>
+    <div class="row">
+        <!--div.col-xs-12.col-sm-6.col-md-3.col-lg-3*4>div.col-xs-12.prices.orange.darken-3.text-center.white-text>h2{Titre}+p.big{6}+p{description}+a.white-text{Détails}+br+a.btn.grey{Buy}-->
+        <!--blue
+        indigo
+        deep-purple
+        purple-->
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 prices blue darken-3 text-center white-text">
+                <h2><strong>Standard</strong></h2>
+                <p class="medium"><span class="big">1</span>€</p>
+                <p>per hour billed immediatly</p>
+                <a class="white-text" href="">Détails</a>
+                <br>
+                <a href="" class="btn white-text blue darken-2">Buy</a>
+            </div>
         </div>
-        <div class="col-xs-2 col-sm-6 col-md-8 col-lg-4 red">
-            <h2><strong>{{ 'offer.offer_prenium_title'|trans }}</strong></h2>
-            <blockquote>
-            <p class="lead text-center">{{ 'offer.offer_prenium_description'|trans }}</p>
-            </blockquote>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 prices indigo darken-3 text-center white-text">
+                <h2><strong>Prenium</strong></h2>
+                <p class="medium"><span class="big">15</span>€</p>
+                <p>per 20 hours billed monthly</p>
+                <a class="white-text" href="">Détails</a>
+                <br>
+                <a href="" class="btn white-text indigo darken-2">Buy</a>
+            </div>
         </div>
-        <div class="col-xs-2 col-sm-6 col-md-8 col-lg-4 blue">
-            <h2><strong>{{ 'offer.offer_entreprise_title'|trans }}</strong></h2>
-            <blockquote>
-            <p class="lead text-center">{{ 'offer.offer_entreprise_description'|trans }}</p>
-            </blockquote>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 prices deep-purple darken-3 text-center white-text">
+                <h2><strong>Prenium Plus</strong></h2>
+                <p class="medium"><span class="big">28</span>€</p>
+                <p>per 40 hours billed monthly</p>
+                <a class="white-text" href="">Détails</a>
+                <br>
+                <a href="" class="btn white-text deep-purple darken-2">Buy</a>
+            </div>
         </div>
-        <div class="green">
-            <p class="lead text-center">{{ 'offer.offer_performance'|trans }}</p>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 prices purple darken-3 text-center white-text">
+                <h2><strong>Enterprise</strong></h2>
+                <p class="medium">Coming 2017</p>
+                <p>Designed for entreprise</p>
+                <a class="white-text" href="">Détails</a>
+                <br>
+                <a href="" class="btn white-text purple darken-2">Buy</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <h1 class="blue-text">Our Customers</h1>
+        <div class="text-center">
+            <a href="https://www.nasa.gov/"><img width="200px" src="{{ asset('images/customersLogos/nasa.png') }}" alt=""></a>
+            <a href="https://www.google.com/"><img width="200px" src="{{ asset('images/customersLogos/google.png') }}" alt=""></a>
+            <a href="http://www.samsung.com/fr/home/"><img width="200px" src="{{ asset('images/customersLogos/supinfo.png') }}" alt=""></a>
+            <a href="http://www.supinfo.com/"><img width="200px" src="{{ asset('images/customersLogos/samsung.svg.png') }}" alt=""></a>
         </div>
     </div>
 {% endblock %}

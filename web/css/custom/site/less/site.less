@@ -15,11 +15,41 @@ html, body{
 .btn-google{
     background-color: #DD4B39;
 }
-.row-table{
-    diplay:table;
-    [class*="col-"] {
-        float: none;
-        display: table-cell;
-        vertical-align: top;
+
+div.prices{
+    padding: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    height: 400px;
+    p > span.big{
+        font-size: 130px;
+    }
+    p.medium{
+        font-size: 50px;
+    }
+}
+
+ol.termofservice >li{
+    margin-bottom: 20px;
+}
+
+@padding: 7.5px;
+
+.event-grid{
+    .event{
+        padding-left: @padding;
+        padding-right: @padding;
+        img{
+            width:100%;
+        }
+        .event-right{
+            padding-left: @padding;
+            padding-right: 0px;
+        }
+        .event-left{
+            padding-right: @padding;
+            padding-left: 0px;
+        }
     }
 }

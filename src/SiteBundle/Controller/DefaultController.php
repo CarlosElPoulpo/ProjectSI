@@ -163,13 +163,6 @@ class DefaultController extends Controller
         return $this->render('site/default/events.html.twig');
     }
 
-    /**
-     * @Route ("customers", name="customers")
-     */
-    public function customersAction(){
-        return $this->render('site/default/customers.html.twig');
-    }
-
     public function menuAction(){
         return $this->render(':site/elements:menu.html.twig');
     }

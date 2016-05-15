@@ -32,6 +32,28 @@
                 {% endfor %}
 
                 <div class="form-group label-floating">
+                    {{ form_label(form.firstname, 'form.firstname'|trans, {'attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                {% for errorItem in form.firstname.vars.errors %}
+                    <div class="alert alert-dismissible alert-danger">
+                        <button  type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Error !!!</strong> {{ errorItem.message }}
+                    </div>
+                {% endfor %}
+
+                <div class="form-group label-floating">
+                    {{ form_label(form.lastname, 'form.lastname'|trans, {'attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                {% for errorItem in form.lastname.vars.errors %}
+                    <div class="alert alert-dismissible alert-danger">
+                        <button  type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>Error !!!</strong> {{ errorItem.message }}
+                    </div>
+                {% endfor %}
+
+                <div class="form-group label-floating">
                     {{ form_label(form.plainPassword.first, 'form.password'|trans, {'attr': {'class': 'control-label'}}) }}
                     {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
                 </div>

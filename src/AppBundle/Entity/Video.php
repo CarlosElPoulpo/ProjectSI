@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Entity\VideoRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VideoRepository")
  * @ORM\Table(name="video")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -48,9 +48,16 @@ class Video
      * @var integer
      *
      * @ORM\Column(name="size", type="integer", nullable=False)
-     * @Assert\Length(min=3)
      */
     protected $size;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="duration", type="integer", nullable=False)
+     * @Assert\Length(min=3)
+     */
+    protected $duration;
 
     private $temp;
 
@@ -87,11 +94,33 @@ class Video
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
             $this->format = $this->file->guessExtension();
+            $this->duration = $this->findDuration();
             $this->size = filesize($this->file);
             $this->url = $filename.'.'.$this->format;
         }
     }
 
+    public function findDuration(){
+        /*ob_start();
+        passthru("ffmpeg -i working_copy.flv  2>&1");
+        $duration = ob_get_contents();
+        $full = ob_get_contents();
+        ob_end_clean();
+        $search = "/duration.*?([0-9]{1,})/";
+        print_r($duration);
+        $duration = preg_match($search, $duration, $matches, PREG_OFFSET_CAPTURE, 3);
+        print_r('<pre>');
+        print_r($matches[1][0]);
+        print_r($full);*/
+
+        /*$ffprobe = $this->get('dubture_ffmpeg.ffprobe');
+        $ffprobe
+            ->format('/path/to/video/mp4') // extracts file informations
+            ->get('duration');*/
+        $duration = 4;
+        return $duration;
+    }
+    
     /**
      * @ORM\PostPersist()
      * @ORM\PostUpdate()
@@ -239,5 +268,29 @@ class Video
     public function getSize()
     {
         return $this->size;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     *
+     * @return Video
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer
+     */
+    public function getDuration()
+    {
+        return $this->duration;
     }
 }

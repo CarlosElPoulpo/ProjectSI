@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Entity\JobRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\JobRepository")
  * @ORM\Table(name="job")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -87,10 +87,29 @@ class Job
     protected $video;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist"})
      * @Assert\Valid()
      **/
     protected $user;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Bill", cascade={"persist"})
+     */
+    private $bill;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function createBill()
+    {
+        $bill = new Bill();
+        dump($this->video);
+        $price = $this->getUser()->getSubscription()->getPriceperhour()*4;
+        dump($price);
+        $bill->setAmount($price);
+        dump($bill);
+        $this->setBill($bill);
+    }
 
     /**
      * Get id
@@ -273,11 +292,11 @@ class Job
     /**
      * Set user
      *
-     * @param \AppBundle\Entity\User $user
+     * @param \UserBundle\Entity\User $user
      *
      * @return Job
      */
-    public function setUser(\AppBundle\Entity\User $user = null)
+    public function setUser(\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -287,10 +306,34 @@ class Job
     /**
      * Get user
      *
-     * @return \AppBundle\Entity\User
+     * @return \UserBundle\Entity\User
      */
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set bill
+     *
+     * @param \AppBundle\Entity\Bill $bill
+     *
+     * @return Job
+     */
+    public function setBill(\AppBundle\Entity\Bill $bill = null)
+    {
+        $this->bill = $bill;
+
+        return $this;
+    }
+
+    /**
+     * Get bill
+     *
+     * @return \AppBundle\Entity\Bill
+     */
+    public function getBill()
+    {
+        return $this->bill;
     }
 }
