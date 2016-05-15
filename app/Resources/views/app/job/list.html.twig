@@ -26,22 +26,26 @@
             <td>{{ job.name }}</td>
             <td>{{ job.targetformat }}</td>
             <td>{{ job.video }}</td>
-            <td>{{ job.submitdate|date('d/m/Y') }}</td>
+            <td><span class="green-text"><strong>{{ job.submitdate|date('d/m/Y') }}</strong></span></td>
             <td>
                 {% if job.launchdate is not null %}
-                    {{ job.launchdate|date('d/m/Y') }}
+                    <span class="blue-text"><strong>{{ job.launchdate|date('d/m/Y') }}</strong></span>
                 {% else %}
                     <span class="red-text">Not launched</span>
                 {% endif %}
             </td>
             <td>
                 {% if job.finishdate is not null %}
-                    {{ job.finishdate|date('d/m/Y') }}
+                    <span class="orange-text"><strong>{{ job.finishdate|date('d/m/Y') }}</strong></span>
                 {% else %}
                     <span class="red-text">Not finish</span>
                 {% endif %}
             </td>
-            <td>{{ job.finish }}</td>
+            <td class="text-center">{% if job.finish == 1 %}
+                    <span class="green-text"><strong>Yes</strong></span>
+                {% else %}
+                    <span class="red-text"><strong>No</strong></span>
+                {% endif %}</td>
             <td><a class="teal-text" href="{{ path('job_details', {'id': job.id}) }}">{{ 'job.list.table.details'|trans }}</a></td>
         </tr>
         {% endfor %}

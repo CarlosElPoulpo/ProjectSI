@@ -119,8 +119,8 @@ hwi_oauth:
             paths:
                 email: email
 
-#dubture_f_fmpeg:
-#    ffmpeg_binary: C:\FFmpeg\bin\ffmpeg.exe
-#    ffprobe_binary: C:\FFmpeg\bin\ffprobe.exe
-#    binary_timeout: 0 # Use 0 for infinite
-#    threads_count: 4
+dubture_f_fmpeg:
+    ffmpeg_binary: C:\FFmpeg\bin\ffmpeg.exe
+    ffprobe_binary: C:\FFmpeg\bin\ffprobe.exe
+    binary_timeout: 300 # Use 0 for infinite
+    threads_count: 4

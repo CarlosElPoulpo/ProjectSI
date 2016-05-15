@@ -7,6 +7,11 @@ use AppBundle\Entity\Job;
 use AppBundle\Entity\Video;
 use AppBundle\Form\JobType;
 use AppBundle\Form\VideoType;
+use FFMpeg\FFMpeg;
+use FFMpeg\FFProbe\DataMapping\Format;
+use FFMpeg\Format\Audio\Mp3;
+use FFMpeg\Format\Audio\Wav;
+use FFMpeg\Media\Audio;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,18 +29,32 @@ class JobController extends Controller
             $user = $this->getUser();
             $job->setUser($user);
             $job->setFinish(false);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($job);
-            $em->flush();
+            $job->getVideo()->setDuration(0);
+            $this->persistJob($job);
 
             $request->getSession()->getFlashBag()->add('notice', 'Job soumis.');
 
             #return $this->redirectToRoute('overview');
-            #return $this->redirect($this->generateUrl('job_details', array('id' => $job->getId())));
+            return $this->redirect($this->generateUrl('job_payment', array('id' => $job->getId())));
         }
         return $this->render('app/job/submit.html.twig', array('form'=> $form->createView()));
     }
 
+    public function persistJob(Job $job){
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($job->getVideo());
+        $em->flush();
+        $ffmprobe = $this->get('dubture_ffmpeg.ffprobe');
+        $videoduration = $ffmprobe->format("D:/Projets/ProjectSI/web/".$job->getVideo()->getWebUrl())->get('duration');
+        $hourduration = round(0.000277778 * $videoduration, 2);
+        if ($hourduration < 0.01){
+            $hourduration = 0.01;
+        }
+        $job->getVideo()->setDuration($hourduration);
+        $em->persist($job);
+        $em->flush();
+    }
+    
     /**
      * @Route("/jobs/historic", name="job_list")
      */
@@ -55,5 +74,46 @@ class JobController extends Controller
         $repository = $em->getRepository(Job::class);
         $job = $repository->find($id);
         return $this->render('app/job/details.html.twig', array('job'=> $job));
+    }
+
+    /**
+     * @Route("/jobs/payment/{id}", name="job_payment")
+     */
+    public function paymentAction($id)
+    {
+        if($this->getUser()->getSubscription()->getName() == "standard"){
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository(Job::class);
+            $job = $repository->find($id);
+            return $this->render('app/job/payment.html.twig', array('job'=> $job));
+        }else{
+            return $this->redirect($this->generateUrl('job_details', array('id' => $id)));
+        }
+    }
+
+    /**
+     * @Route("/jobs/launch/transcoding/{id}", name="job_launch_transcoding")
+     */
+    public function transcodingAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Job::class);
+        $job = $repository->find($id);
+
+        $ffmpeg = $this->get('dubture_ffmpeg.ffmpeg');
+        $video = $ffmpeg->open("D:/Projets/ProjectSI/web/".$job->getVideo()->getWebUrl());
+        $format = new Mp3();
+        if ($job->getTargetformat() == "wav"){
+            $format = new Wav();
+        }
+        $output = $job->result();
+
+        $job->setLaunchdate(new \DateTime());
+        $video->save($format, $output);
+        $job->setFinishdate(new \DateTime());
+        $job->setFinish(true);
+        $em->persist($job);
+        $em->flush();
+        return $this->redirect($this->generateUrl('job_details', array('id' => $id)));
     }
 }

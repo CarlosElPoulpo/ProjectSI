@@ -103,14 +103,11 @@ class Job
     public function createBill()
     {
         $bill = new Bill();
-        dump($this->video);
-        $price = $this->getUser()->getSubscription()->getPriceperhour()*4;
-        dump($price);
+        $price = $this->getUser()->getSubscription()->getPriceperhour()*$this->getVideo()->getDuration();
         $bill->setAmount($price);
-        dump($bill);
         $this->setBill($bill);
     }
-
+    
     /**
      * Get id
      *
@@ -335,5 +332,13 @@ class Job
     public function getBill()
     {
         return $this->bill;
+    }
+
+    public function result(){
+        return "D:/Projets/ProjectSI/web/".$this->resultWebUrl();
+    }
+
+    public function resultWebUrl(){
+        return "downloads/".$this->getVideo()->getName().".".$this->getTargetformat();
     }
 }

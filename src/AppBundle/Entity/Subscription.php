@@ -126,4 +126,3 @@ class Subscription
         return $this->billedmonthly;
     }
 }
-

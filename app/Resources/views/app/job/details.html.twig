@@ -20,9 +20,10 @@
                 <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
                 {% if job.targetformat == "mp3" %}
                     <img src="{{ asset('css/custom/pictures/file_icon_set/mp3.png') }}" alt="MP3 file">
-                {% elseif job.targetformat == "WMA" %}
-                    <img src="{{ asset('css/custom/pictures/file_icon_set/wma.png') }}" alt="WMA file">
+                {% elseif job.targetformat == "wav" %}
+                    <img src="{{ asset('css/custom/pictures/file_icon_set/wav.png') }}" alt="WAV file">
                 {% endif %}
+                <div class="col-md-12 text-center"><h4>Cost {{ job.bill.amount }} €</h4></div>
             </div>
             <div class="col-lg-8">
                 <h3>Timeline</h3>
@@ -64,14 +65,18 @@
                         {% endif %}
                     </ul>
                 </div>
+                {% if job.finish %}
+                    <div class="col-md-offset-1 col-md-10 blue text-center">
+                        <h2>Résultat du transcoding</h2>
+                        <audio controls src="{{ asset(job.resultWebUrl()) }}">Résultat du transocidng</audio>
+                        <div class="col-xs-12 blue text-center">
+                            <a class="btn white-text" href="{{ asset(job.resultWebUrl()) }}" download="{{ job.name }}"><i class="fa fa-download"></i> Download</a>
+                            <a class="btn btn-danger" href="#">Signal problem</a>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
-            <div class="col-xs-12">
-                <h3>Cost {{ job.bill.amount }} €</h3>
-            </div>
-            <div class="col-xs-12 blue text-center">
-                <a class="btn white-text" href="#"><i class="fa fa-upload"></i> Download</a>
-                <a class="btn btn-danger" href="#">Signal problem</a>
-            </div>
+
         </div>
         <div class="col-lg-4">
             <div class="col-md-12">
@@ -79,6 +84,9 @@
                 <video controls width="100%" src="{{ asset(job.video.webUrl) }}">Vidéo à transcoder</video>
                 <h3>Informations</h3>
                 <i class="fa fa-cubes"></i> Size {{ job.video.size }} bits
+                {% if not job.finish %}
+                    <a class="btn btn-primary" href="{{  path('job_launch_transcoding', {'id': job.id}) }}">Launch transcode</a>
+                {% endif %}
             </div>
         </div>
     </div>

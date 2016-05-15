@@ -1,0 +1,29 @@
+{% extends ':app:base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block page_h1 %}
+    {{ 'job.payment.page_title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <table class="table table-inverse">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'job.attr.name'|trans }}</th>
+            <th>{{ 'job.attr.target_format'|trans }}</th>
+            <th>{{ 'job.attr.video'|trans }}</th>
+            <th>Montant</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ job.id }}</th>
+                <td>{{ job.name }}</td>
+                <td>{{ job.targetformat }}</td>
+                <td>{{ job.video }}</td>
+                <td>{{ job.bill.amount }} €</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="#" class="btn">Acheter</a>
+{% endblock %}

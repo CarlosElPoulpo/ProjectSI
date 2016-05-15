@@ -19,7 +19,7 @@ class JobType extends AbstractType
     {
         $builder
             ->add('video', VideoType::class, array('label' => 'job.attr.video', 'translation_domain' => 'AppBundle'))
-            ->add('targetformat', ChoiceType::class, array('choices'  => array('.mp3' => 'mp3','.WMA' => 'WMA'), 'label' => 'job.attr.target_format', 'translation_domain' => 'AppBundle', 'empty_data'  => null))
+            ->add('targetformat', ChoiceType::class, array('choices'  => array('.mp3' => 'mp3','.wav' => 'wav'), 'label' => 'job.attr.target_format', 'translation_domain' => 'AppBundle', 'empty_data'  => null))
             ->add('save', SubmitType::class, array('label' => 'job.submit.button', 'translation_domain' => 'AppBundle'))
         ;
     }
