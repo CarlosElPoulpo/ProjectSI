@@ -169,6 +169,7 @@ class DefaultController extends Controller
     public function customersAction(){
         return $this->render('site/default/customers.html.twig');
     }
+    
 
     public function menuAction(){
         return $this->render(':site/elements:menu.html.twig');

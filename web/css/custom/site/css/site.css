@@ -20,3 +20,22 @@ body {
   display: table-cell;
   vertical-align: top;
 }
+div.job-offer div img {
+  width: 100%;
+}
+.event-grid .event {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.event-grid .event img {
+  width: 100%;
+  padding-bottom: 14px;
+}
+.event-grid .event .event-right {
+  padding-left: 7px;
+  padding-right: 0px;
+}
+.event-grid .event .event-left {
+  padding-right: 7px;
+  padding-left: 0px;
+}

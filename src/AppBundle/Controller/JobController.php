@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Job;
+use AppBundle\Entity\Paypal;
 use AppBundle\Entity\Video;
 use AppBundle\Form\JobType;
 use AppBundle\Form\VideoType;
@@ -54,5 +55,23 @@ class JobController extends Controller
         $repository = $em->getRepository(Job::class);
         $job = $repository->find($id);
         return $this->render('app/job/details.html.twig', array('job'=> $job));
+    }
+
+    /**
+     * @Route ("/jobs/paypal", name="paypal")
+     */
+    public function paypalAction(){
+        $paypal = new Paypal(100,
+            0,
+            0,
+            "http://127.0.0.1:8080/edsa-ProjectSI/web/app_dev.php",
+            "http://127.0.0.1:8080/edsa-ProjectSI/web/app_dev.php/payementFail",
+            "maxime@hotmail.fr",
+            "Nom du produit",
+            "FR",
+            "EUR",
+            "idUser");
+
+        return $this->render('site/default/paypal.html.twig', ['paypal'=>$paypal]);
     }
 }

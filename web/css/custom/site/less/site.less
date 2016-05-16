@@ -1,25 +1,56 @@
-html, body{
-    height: 100%;
+html, body {
+  height: 100%;
 }
 
 .body-content {
-    padding-top: 70px;
-    min-height: 100%;
+  padding-top: 70px;
+  min-height: 100%;
 }
 
-.btn-facebook{
-    background-color: #3b5998;
+.btn-facebook {
+  background-color: #3b5998;
 
 }
 
-.btn-google{
-    background-color: #DD4B39;
+.btn-google {
+  background-color: #DD4B39;
 }
-.row-table{
-    diplay:table;
-    [class*="col-"] {
-        float: none;
-        display: table-cell;
-        vertical-align: top;
+
+.row-table {
+  diplay: table;
+  [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+div.job-offer {
+  div {
+    img {
+      width: 100%;
     }
+  }
+}
+
+@padding: 7px;
+
+.event-grid{
+  .event{
+    padding-left: @padding;
+    padding-right: @padding;
+
+    img{
+      width:100%;
+      padding-bottom: @padding*2;
+    }
+    .event-right{
+      padding-left: @padding;
+      padding-right: 0px;
+    }
+    .event-left{
+      padding-right: @padding;
+      padding-left: 0px;
+    }
+  }
 }

@@ -2,9 +2,102 @@
 
 {% block body %}
 
-    <h1>Project</h1>
+    <h1 class=" blue-text darken-3 "><strong>Transcode</strong> Project </h1>
 
+    <div class="col-xs-4">
+        <h2 class="cyan-text accent-3"> Project Overview </h2>
+        <p> Transcode Inc business model is to sell CPU power across the network. They operate a pool of workers
+            that will undertake various tasks submitted by users through a website.
+        <p>Users submit tasks over the web interface and get the result once completed. Users are charged for
+            each task they submit.</p>
+        <p> During the launching process, the first tasks available will be audio and video transcoding.
+            You've selected as the main subcontractor that will undertake the development of the POC.</p>
+    </div>
+    <div class="col-xs-4">
+        <h2 class="cyan-text accent-3"> User accounts </h2>
+        <p>Users need an account to make use of the website features. However, if they already have a Facebook or
+            Google account, they can automatically link it to their transcode account. If they don't they can create
+            an account with their email address.</p>
+        <p>User accounts allow to keep up to 10GB of previous conversion results. Those files are only available
+            when the user is logged into his account.</p>
+    </div>
 
+    <div class="col-xs-4">
+        <h2 class="cyan-text accent-3">Submitting a task</h2>
+        <p>Anyone can begin a task submission. If the user is not logged into his account or doesn't have an account
+            with trasncode, he'll be prompted to create one after the file to convert has been uploaded and the price
+            computed. He'll have to go through the account creation process (or use a Google/Facebook account)
+            before continuing and paying the conversion fee.</p>
+        <p>Users can ask Transcode to convert a file either by uploading it or by giving a URL (i.e
+            http://my-website.com/uploads/vacations.avi)
+            where the resource is. Afterwise, the file format auto-detected and the
+            user just has to select the format he wants transcode to convert the file to.</p>
 
+    </div>
+    <div class="col-xs-4">
+        <h2 class="cyan-text accent-3">Supporting architecture</h2>
+        <p>The supporting architecture must be reliable and efficient. It has to provide two main features: High
+            availability of the application components, and storage. It must also have an efficient network between
+            the core that orchestrates tasks and the workers that will undertake actual conversion tasks.
+            It should also be easy to add new workers to the pool to scale up if necessary.</p>
+    </div>
 
+    <div class="col-xs-4">
+        <h2 class="cyan-text accent-3"> Storage </h2>
+        <p> The solution must make use of a SAN. In your POC you can create an iSCSI SAN using heartbeat. The
+            network design should be done accordingly. The storage is a critical part of the setup.
+        </p>
+    </div>
+    <div class="col-xs-4">
+        <h2 class="cyan-text accent-3"> Workers </h2>
+        <p> Workers are doing the actual conversion task. It should be easy to add/remove workers from the pool.
+            They must have a correctly-sized access to the SAN.
+        </p>
+    </div>
+    <div class="col-xs-12">
+        <h2 class="cyan-text accent-3">Company</h2>
+        <p>DOS, que ce soit dans sa version IBM PC-DOS ou dans les versions pour clones MS-DOS, ne comportait pas
+            d'interface graphique. Il était possible avec une grande facilité de créer des graphiques sous le langage
+            BASICA (GW-BASIC pour les clones) livré avec le système, mais les commandes devaient être mémorisées par
+            l'utilisateur et tapées à la main, ce qui rendait le système pénible d'emploi.</p>
+
+        <p> Par ailleurs, chaque couple application/périphérique exigeait son pilote générique, ce qui rendait la
+            gestion de ces pilotes compliquée et constituait un frein à l'évolution des configurations.
+
+        <p> Inspirées d'interfaces comme l'Alto de Xerox, puis du Lisa et du Macintosh d'Apple, les premières versions
+            de Transcode, en 16 bits, s'appuyaient sur l'OS existant : MS-DOS. Celui-ci ayant été conçu monotâche, on y
+            lançait Transcode comme un simple programme, qui incorporait dès lors quelques-unes de ses fonctions (comme le
+            tracking de la souris au système). La limitation intrinsèque propre au monotâche, ainsi que le côté marginal
+            de Transcode 1 (dont les fenêtres ne faisaient que partager l'écran sans superpositions), puis Transcode 2
+            (permettant les superpositions, mais de faible performances) n'inquiétèrent pas alors le rival Apple, plus
+            préoccupé de la stratégie d'IBM.</p>
+
+        <p>IBM ne pensait pas l'usage du mode graphique viable avec la limitation à 640 K du DOS ni la faible résolution
+            des écrans de l'époque et s'orienta vers un multi-fenêtrage en mode texte, Topview, très réactif, mais
+            gardant malheureusement l'inconfort du DOS.</p>
+
+        <p> Transcode 3 intégra trois versions livrées simultanément : une en mode 8086 (16 bits simples), une seconde en
+            mode 80286 (16 bits avec adressage étendu) et une troisième en mode 80386 (adressage 32 bits). L'appel de la
+            commande win depuis le DOS effectuait quelques tests système et lançait automatiquement la version jugée la
+            plus appropriée, sauf demande expresse de l'utilisateur au moyen de paramètres. La version du DOS était elle
+            aussi testée, afin de substituer autant de fonctions Transcode que possible à celle du DOS, qui ne servait
+            plus guère que de lanceur et d'implanter les vecteurs d'appel aux bons endroits (un effet collatéral fut une
+            série de messages d'avertissement si on lançait Transcode depuis un OS concurrent comme DR-DOS). Son usage
+            d'Adobe Type Manager le positionna comme un concurrent sérieux du MacIntosh et déclencha de la part d'Apple
+            un procès en contrefaçon. Mais Apple le perdit à cause du précédent de l'Alto.</p>
+
+        <p> La version 3.1 poussa la qualité un peu plus loin en remplaçant Adobe Type Manager par TrueType. Une version
+            3.11 (Transcode for Workgroups) intégra de façon native l'usage du réseau local.</>
+
+        <p> Ces versions avaient peu à peu fini par intégrer un noyau, un shell propre similaire au DOS et des
+            utilitaires de gestion du système d'exploitation en plus de l'interface graphique qui donna son nom au
+            système d'exploitation. Elles furent donc considérées comme les successeurs de MS-DOS, avec le confort que
+            chaque périphérique comme chaque application n'avait besoin dès lors que du driver Transcode, ce qui
+            simplifiait considérablement la gestion de ceux-ci.</p>
+
+        <p> Avec Transcode 95, l'OS (Operating System), épaulé par une importante campagne de publicité grand public,
+            rencontre un grand succès, dû en partie au fait que son éditeur a passé de très nombreux accords
+            d'exclusivité avec les constructeurs d'ordinateurs leur interdisant d'installer un autre système sous peine
+            de sanctions financières2. Il est vendu préinstallé sur la quasi-totalité des ordinateurs personnels.</p>
+    </div>
 {% endblock %}

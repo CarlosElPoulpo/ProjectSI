@@ -1,0 +1,31 @@
+    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+        <!-- le prix du produit -->
+        <input type='hidden' value="{{ paypal.prix }}" name="amount" />
+        <!-- choix de la monaie -->
+        <input name="currency_code" type="hidden" value="{{ paypal.device }}" />
+        <!-- frais de port -->
+        <input name="shipping" type="hidden" value="{{ paypal.shipping }}" />
+        <!-- TVA -->
+        <input name="tax" type="hidden" value="{{ paypal.tva }}" />
+        <!-- Page de retour si payement accepté -->
+        <input name="return" type="hidden" value="{{ paypal.urlPayementValid }}" />
+        <!-- Page de retour si payement annulé -->
+        <input name="cancel_return" type="hidden" value="{{ paypal.urlPayementRefuse }}" />
+        <!-- Page de retour pour le payement securisé -->
+        <input name="notify_url" type="hidden" value="http://votredomaine/validationPaiement.php" />
+        <!-- verifie sur quel type de bouton l'user a cliqué -->
+        <input name="cmd" type="hidden" value="_xclick" />
+        <!-- frais de port -->
+        <input name="business" type="hidden" value="{{ paypal.adressBusiness }}" />
+        <!-- Nom du produit  -->
+        <input name="item_name" type="hidden" value="Nom de votre produit" />
+        <!-- Supprimer la demande de note (pas de commentaire sur la transaction) -->
+        <input name="no_note" type="hidden" value="1" />
+        <!-- langue par default -->
+        <input name="lc" type="hidden" value="{{ paypal.language }}" />
+        <!-- paremetre de bouton -->
+        <input name="bn" type="hidden" value="PP-BuyNowBF" />
+        <input name="custom" type="hidden" value="ID_ACHETEUR" />
+        <input alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée" name="submit" src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" type="image" /><img src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" border="0" alt="" width="1" height="1" />
+
+    </form>

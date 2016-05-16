@@ -1,5 +1,71 @@
 {% extends ':site:base.html.twig' %}
 
 {% block body %}
-    <h1>Partners</h1>
+    <h1 class="text-blue">Partners</h1>
+    Such an experience would never have been born without the invaluable cooperation of our partners, on both technical and financial sides:
+
+    <div class="media">
+        <div class="media-left col-xs-3">
+            <a target="_blank" href="https://www.free.fr/">
+                <img class="media-object" src="{{ asset('images/partners/free.gif') }}" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">Free</h3>
+            <p> The French ISP Free S.A.S hosts 3 of our servers in one of their datacenters near Paris.
+                Free is also using VLC for their FreePlayer project.
+                Free hosted and sponsored our first DevDays in 2008 and also in 2013</p>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left col-xs-3">
+            <a target="_blank" href="http://www.gandi.net/">
+                <img class="media-object" src="{{ asset('images/partners/gandi.png') }}" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">Gandi</h3>
+            <p>
+                Gandi is a one of most popular registar in France and in Europe. Founded in 1999, and based in Paris and in London, it has had a long history of quality, proximity to people and decent prices.
+                Gandi has always cultivated its difference and humanity and supports many projects following the VideoLAN's ideals.
+                Gandi supports VideoLAN by managing their domain names and helping the VideoLAN association in various administrative tasks.</p>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left col-xs-3">
+            <a target="_blank" href="http://andrewbeveridge.co.uk/">
+                <img class="media-object" src="{{ asset('images/partners/ab.png') }}" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">Andrew Beveridge</h3>
+            <p>Andrew Beveridge is a freelance web developer based in Scotland, UK. He donated a virtual server to the project to help with building each release, as a way of giving something back to his media player of choice for a decade.</p>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left col-xs-3">
+            <a target="_blank" href="http://www.ecp.fr/">
+                <img class="media-object" src="{{ asset('images/partners/logoECP.png') }}" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">École Centrale Paris</h3>
+            <p>The École Centrale Paris and it's Master in Open Information System are historic partners of the project. The Master in Open Information System aims to enable the student to acquire a real competence in the field of Open Computing Systems and supports VideoLAN as a key developement project.</p>
+        </div>
+    </div>
+
+    <div class="media">
+        <div class="media-left col-xs-3">
+            <a target="_blank" href="http://www.zf.com/corporate/de_de/homepage/homepage.html">
+                <img class="media-object" src="{{ asset('images/partners/zf.jpg') }}" alt="...">
+            </a>
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">ZF Friedrichshafen</h3>
+            <p>ZF Friedrichshafen AG and its subsidary ZF Electronics GmbH donated five "Cherry" branded keyboards to improve the media hotkey integration in VLC's Mac OS X port.</p>
+        </div>
+    </div>
 {% endblock %}
