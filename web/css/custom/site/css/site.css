@@ -28,21 +28,6 @@ div.prices p.medium {
 ol.termofservice > li {
   margin-bottom: 20px;
 }
-.event-grid .event {
-  padding-left: 7.5px;
-  padding-right: 7.5px;
-}
-.event-grid .event img {
-  width: 100%;
-}
-.event-grid .event .event-right {
-  padding-left: 7.5px;
-  padding-right: 0px;
-}
-.event-grid .event .event-left {
-  padding-right: 7.5px;
-  padding-left: 0px;
-}
 div.job-offer div img {
   width: 100%;
 }
