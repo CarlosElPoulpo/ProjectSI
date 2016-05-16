@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Entity\VideoRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\VideoRepository")
  * @ORM\Table(name="video")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -23,13 +23,20 @@ class Video
     /**
      * @var string
      *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="url", type="string", length=255, nullable=false)
      */
     private $url;
 
     /**
      * @Assert\File(
-     *     maxSize = "500M",
+     *     maxSize = "5000M",
      *     mimeTypes = {"video/mp4", "video/avi", "video/mpeg"},
      *     mimeTypesMessage = "ce format de video est inconnu",
      * )
@@ -48,9 +55,16 @@ class Video
      * @var integer
      *
      * @ORM\Column(name="size", type="integer", nullable=False)
-     * @Assert\Length(min=3)
      */
     protected $size;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="duration", type="integer", nullable=False)
+     * @Assert\Length(min=3)
+     */
+    protected $duration;
 
     private $temp;
 
@@ -86,12 +100,13 @@ class Video
         if (null !== $this->file) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
+            $this->name = $filename;
             $this->format = $this->file->guessExtension();
             $this->size = filesize($this->file);
             $this->url = $filename.'.'.$this->format;
         }
     }
-
+    
     /**
      * @ORM\PostPersist()
      * @ORM\PostUpdate()
@@ -239,5 +254,53 @@ class Video
     public function getSize()
     {
         return $this->size;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     *
+     * @return Video
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Video
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

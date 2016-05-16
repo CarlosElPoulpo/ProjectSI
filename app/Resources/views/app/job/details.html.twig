@@ -5,64 +5,89 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col-lg-8">
-        <h2>Informations</h2>
-        <div class="col-lg-4">
-            <h3>Conversion</h3>
-            {% if job.video.format == "mp4"%}
-                <img src="{{ asset('css/custom/pictures/file_icon_set/mp4.png') }}" alt="MP4 file">
-            {% elseif job.video.format == "avi"%}
-                <img src="{{ asset('css/custom/pictures/file_icon_set/avi.png') }}" alt="AVI file">
-            {% elseif job.video.format == "mpeg"%}
-                <img src="{{ asset('css/custom/pictures/file_icon_set/mpeg.png') }}" alt="MPEG file">
-            {% endif %}
-            <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
-            {% if job.targetformat == "mp3" %}
-                <img src="{{ asset('css/custom/pictures/file_icon_set/mp3.png') }}" alt="MP3 file">
-            {% elseif job.targetformat == "WMA" %}
-                <img src="{{ asset('css/custom/pictures/file_icon_set/wma.png') }}" alt="WMA file">
-            {% endif %}
-        </div>
+    <div class="row">
         <div class="col-lg-8">
-            <h3>Timeline</h3>
-            <div class="col-lg-offset-1 col-lg-10">
-                <ul class="timeline">
-                    <li class="">
-                        <div class="timeline-badge green"><i class="fa fa-upload"></i></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title green-text">Submit job for transcoding</h4>
-                                <small>{{ job.submitdate|date('d/m/Y') }}</small>
+            <h2>Informations</h2>
+            <div class="col-lg-4">
+                <h3>Conversion</h3>
+                {% if job.video.format == "mp4" %}
+                    <img src="{{ asset('css/custom/pictures/file_icon_set/mp4.png') }}" alt="MP4 file">
+                {% elseif job.video.format == "avi" %}
+                    <img src="{{ asset('css/custom/pictures/file_icon_set/avi.png') }}" alt="AVI file">
+                {% elseif job.video.format == "mpeg" %}
+                    <img src="{{ asset('css/custom/pictures/file_icon_set/mpeg.png') }}" alt="MPEG file">
+                {% endif %}
+                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                {% if job.targetformat == "mp3" %}
+                    <img src="{{ asset('css/custom/pictures/file_icon_set/mp3.png') }}" alt="MP3 file">
+                {% elseif job.targetformat == "wav" %}
+                    <img src="{{ asset('css/custom/pictures/file_icon_set/wav.png') }}" alt="WAV file">
+                {% endif %}
+                <div class="col-md-12 text-center"><h4>Cost {{ job.bill.amount }} €</h4></div>
+            </div>
+            <div class="col-lg-8">
+                <h3>Timeline</h3>
+                <div class="col-lg-offset-1 col-lg-10">
+                    <ul class="timeline">
+                        <li class="">
+                            <div class="timeline-badge green"><i class="fa fa-upload"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title green-text">Submit job for transcoding</h4>
+                                    <small>{{ job.submitdate|date('d/m/Y') }}</small>
+                                </div>
+                                <div class="timeline-body"></div>
                             </div>
-                            <div class="timeline-body"></div>
+                        </li>
+                        {% if job.launchdate is not null %}
+                            <li class="timeline-inverted">
+                                <div class="timeline-badge blue"><i class="fa fa-spinner" aria-hidden="true"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4 class="timeline-title blue-text">Transcoding begin</h4>
+                                        <small>{{ job.launchdate|date('d/m/Y') }}</small>
+                                    </div>
+                                    <div class="timeline-body"></div>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if job.launchdate is not null %}
+                            <li class="">
+                                <div class="timeline-badge orange"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4 class="timeline-title orange-text">Transcoding finish</h4>
+                                        <small>{{ job.finishdate|date('d/m/Y') }}</small>
+                                    </div>
+                                    <div class="timeline-body"></div>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% if job.finish %}
+                    <div class="col-md-offset-1 col-md-10 blue text-center">
+                        <h2>Résultat du transcoding</h2>
+                        <audio controls src="{{ asset(job.resultWebUrl()) }}">Résultat du transocidng</audio>
+                        <div class="col-xs-12 blue text-center">
+                            <a class="btn white-text" href="{{ asset(job.resultWebUrl()) }}" download="{{ job.name }}"><i class="fa fa-download"></i> Download</a>
+                            <a class="btn btn-danger" href="#">Signal problem</a>
                         </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-badge blue"><i class="fa fa-spinner" aria-hidden="true"></i></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title blue-text">Transcoding begin</h4>
-                                <small>{{ job.launchdate|date('d/m/Y') }}</small>
-                            </div>
-                            <div class="timeline-body"></div>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="timeline-badge orange"><i class="fa fa-check" aria-hidden="true"></i></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title orange-text">Transcoding finish</h4>
-                                <small>{{ job.finishdate|date('d/m/Y') }}</small>
-                            </div>
-                            <div class="timeline-body"></div>
-                        </div>
-                    </li>
-                </ul>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="col-lg-4">
+            <div class="col-md-12">
+                <h2>Video</h2>
+                <video controls width="100%" src="{{ asset(job.video.webUrl) }}">Vidéo à transcoder</video>
+                <h3>Informations</h3>
+                <i class="fa fa-cubes"></i> Size {{ job.video.size }} bits
+                {% if not job.finish %}
+                    <a class="btn btn-primary" href="{{  path('job_launch_transcoding', {'id': job.id}) }}">Launch transcode</a>
+                {% endif %}
             </div>
         </div>
-    </div>
-    <div class="col-lg-4">
-        <h2>Video</h2>
-        <video controls width="100%" src="{{ asset(job.video.webUrl) }}">Vidéo a transcoder</video>
     </div>
 {% endblock %}

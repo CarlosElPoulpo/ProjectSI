@@ -12,13 +12,36 @@ body {
 .btn-google {
   background-color: #DD4B39;
 }
-.row-table {
-  diplay: table;
+div.prices {
+  padding: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  height: 400px;
 }
-.row-table [class*="col-"] {
-  float: none;
-  display: table-cell;
-  vertical-align: top;
+div.prices p > span.big {
+  font-size: 130px;
+}
+div.prices p.medium {
+  font-size: 50px;
+}
+ol.termofservice > li {
+  margin-bottom: 20px;
+}
+.event-grid .event {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+.event-grid .event img {
+  width: 100%;
+}
+.event-grid .event .event-right {
+  padding-left: 7.5px;
+  padding-right: 0px;
+}
+.event-grid .event .event-left {
+  padding-right: 7.5px;
+  padding-left: 0px;
 }
 div.job-offer div img {
   width: 100%;

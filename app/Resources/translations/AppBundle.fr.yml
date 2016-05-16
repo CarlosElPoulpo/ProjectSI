@@ -30,3 +30,5 @@ job:
     submit:
         page_title: "Soumettre un nouveau travail"
         button: "Soumettre"
+    payment:
+        page_title: "Récapitulatif de la commande"

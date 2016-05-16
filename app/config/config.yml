@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+#    - { resource: "@UserBundle/Resources/config/services.yml" }
 #    - { resource: "@SiteBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -71,7 +72,7 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: UserBundle\Entity\User
     resetting:
         email:
             from_email:
@@ -83,6 +84,8 @@ fos_user:
             from_email:
                 address: transcode.supinfo@gmail.com
                 sender_name: Transcode Registration
+        form:
+            type: UserBundle\Form\RegistrationType
 
 hwi_oauth:
     firewall_names: [main]
@@ -115,3 +118,9 @@ hwi_oauth:
                 display: popup
             paths:
                 email: email
+
+dubture_f_fmpeg:
+    ffmpeg_binary: C:\FFmpeg\bin\ffmpeg.exe
+    ffprobe_binary: C:\FFmpeg\bin\ffprobe.exe
+    binary_timeout: 300 # Use 0 for infinite
+    threads_count: 4
