@@ -46,7 +46,7 @@ class JobController extends Controller
         $em->persist($job->getVideo());
         $em->flush();
         $ffmprobe = $this->get('dubture_ffmpeg.ffprobe');
-        $videoduration = $ffmprobe->format("D:/Projets/ProjectSI/web/".$job->getVideo()->getWebUrl())->get('duration');
+        $videoduration = $ffmprobe->format($job->localUrl())->get('duration');
         $hourduration = round(0.000277778 * $videoduration, 2);
         if ($hourduration < 0.01){
             $hourduration = 0.01;
@@ -86,10 +86,39 @@ class JobController extends Controller
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository(Job::class);
             $job = $repository->find($id);
-            return $this->render('app/job/payment.html.twig', array('job'=> $job));
+
+            $paymentvalid = "http://127.0.0.1/edsa-Transcode/web/app_dev.php/app/jobs/details/".(string)$job->getId();
+            $paymentfail = "http://127.0.0.1/edsa-Transcode/web/app_dev.php/app/jobs/payment-fail/".(string)$job->getId();
+            $paypal = new Paypal($job->getBill()->getAmount(),
+                0,
+                0,
+                $paymentvalid,
+                $paymentfail,
+                "maxime@hotmail.fr",
+                $job->getName(),
+                "FR",
+                "EUR",
+                "idUser");
+
+            return $this->render('app/job/payment.html.twig', array('job'=> $job, 'paypalsetting'=> $paypal));
         }else{
             return $this->redirect($this->generateUrl('job_details', array('id' => $id)));
         }
+    }
+
+    /**
+     * @Route("/jobs/payment-fail/{id}", name="job_payment_fail")
+     */
+    public function paymentfailAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Job::class);
+        $job = $repository->find($id);
+
+        $em->remove($job);
+        $em->flush();
+
+        return $this->render('app/job/paymentfail.html.twig', array('job'=> $job));
     }
 
     /**
@@ -102,7 +131,7 @@ class JobController extends Controller
         $job = $repository->find($id);
 
         $ffmpeg = $this->get('dubture_ffmpeg.ffmpeg');
-        $video = $ffmpeg->open("D:/Projets/ProjectSI/web/".$job->getVideo()->getWebUrl());
+        $video = $ffmpeg->open($job->localUrl());
         $format = new Mp3();
         if ($job->getTargetformat() == "wav"){
             $format = new Wav();

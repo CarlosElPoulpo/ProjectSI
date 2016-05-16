@@ -1,0 +1,12 @@
+{% extends ':app:base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% block page_h1 %}
+    {{ 'job.payment.page_title'|trans }}
+{% endblock %}
+
+{% block body %}
+    <div class="alert alert-dismissible alert-danger">
+        <button  type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Payment fail !!</strong> <a href="{{ path("job_submit") }}">Click here for submit new job</a>
+    </div>
+{% endblock %}

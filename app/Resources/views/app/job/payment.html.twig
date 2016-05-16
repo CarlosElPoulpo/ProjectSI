@@ -25,5 +25,5 @@
             </tr>
         </tbody>
     </table>
-    <a href="#" class="btn">Acheter</a>
+    {% include 'app/job/paypal.html.twig' with {'paypal': paypalsetting} only %}
 {% endblock %}

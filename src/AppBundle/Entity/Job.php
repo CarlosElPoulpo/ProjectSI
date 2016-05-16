@@ -12,6 +12,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Job
 {
+
+    private $localpath = "D:/Projets/ProjectSI/web/";
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -334,8 +337,12 @@ class Job
         return $this->bill;
     }
 
+    public function localUrl(){
+        return $this->localpath.$this->getVideo()->getWebUrl();
+    }
+
     public function result(){
-        return "D:/Projets/ProjectSI/web/".$this->resultWebUrl();
+        return $this->localpath.$this->resultWebUrl();
     }
 
     public function resultWebUrl(){
