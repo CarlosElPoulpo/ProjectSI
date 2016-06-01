@@ -87,7 +87,7 @@ class JobController extends Controller
             $repository = $em->getRepository(Job::class);
             $job = $repository->find($id);
 
-            $paymentvalid = "http://127.0.0.1/edsa-Transcode/web/app_dev.php/app/jobs/details/".(string)$job->getId();
+            $paymentvalid = "http://127.0.0.1/edsa-Transcode/web/app_dev.php/app/jobs/payment-done/".(string)$job->getId();
             $paymentfail = "http://127.0.0.1/edsa-Transcode/web/app_dev.php/app/jobs/payment-fail/".(string)$job->getId();
             $paypal = new Paypal($job->getBill()->getAmount(),
                 0,
@@ -104,6 +104,20 @@ class JobController extends Controller
         }else{
             return $this->redirect($this->generateUrl('job_details', array('id' => $id)));
         }
+    }
+
+    /**
+     * @Route("/jobs/payment-done/{id}", name="job_payment_done")
+     */
+    public function paymentdoneAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Job::class);
+        $job = $repository->find($id);
+        $job->setLaunchdate(new \DateTime());
+        $em->persist($job);
+        $em->flush();
+        return $this->redirect($this->generateUrl('job_launch_transcoding', array('id' => $id)));
     }
 
     /**
@@ -138,7 +152,6 @@ class JobController extends Controller
         }
         $output = $job->result();
 
-        $job->setLaunchdate(new \DateTime());
         $video->save($format, $output);
         $job->setFinishdate(new \DateTime());
         $job->setFinish(true);

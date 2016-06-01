@@ -28,7 +28,7 @@ job:
     details:
         page_title:
     submit:
-        page_title: "Soumettre un nouveau travail"
+        page_title: "Insérer votre fichier à convertir"
         button: "Soumettre"
     payment:
         page_title: "Récapitulatif de la commande"

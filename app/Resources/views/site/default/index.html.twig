@@ -1,5 +1,97 @@
-{% extends ':site:base.html.twig' %}
-
-{% block body %}
-    <h1>Home page</h1>
+{% trans_default_domain 'SiteBundle' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Transcode - Home{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="{{ asset('css/site.min.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block menu %}
+    {{ render(controller("SiteBundle:Default:menu")) }}
 {% endblock %}
+<div class="body-content index">
+    <img width="100%" src="{{ asset('images/background-1.jpg') }}" alt="">
+    <div class="container">
+    <div class="text-center">
+        <h1 class="blue-text"><strong>Pricing Guide</strong></h1>
+        <h3 class="grey-text">Transcode is free to use for as long as you want, for teams of all sizes.</h3>
+    </div>
+    <br>
+    <div class="row">
+        <!--div.col-xs-12.col-sm-6.col-md-3.col-lg-3*4>div.col-xs-12.prices.orange.darken-3.text-center.white-text>h2{Titre}+p.big{6}+p{description}+a.white-text{Détails}+br+a.btn.grey{Buy}-->
+        <!--blue
+        indigo
+        deep-purple
+        purple-->
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 prices blue darken-3 text-center white-text">
+                <h2><strong>Standard</strong></h2>
+                <p class="medium"><span class="big">1</span>€</p>
+                <p>per hour billed immediatly</p>
+                <a class="white-text" href="">Détails</a>
+                <br>
+                <a href="" class="btn white-text blue darken-2">Buy</a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 prices indigo darken-3 text-center white-text">
+                <h2><strong>Prenium</strong></h2>
+                <p class="medium"><span class="big">15</span>€</p>
+                <p>per 20 hours billed monthly</p>
+                <a class="white-text" href="">Détails</a>
+                <br>
+                <a href="" class="btn white-text indigo darken-2">Buy</a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 prices deep-purple darken-3 text-center white-text">
+                <h2><strong>Prenium Plus</strong></h2>
+                <p class="medium"><span class="big">28</span>€</p>
+                <p>per 40 hours billed monthly</p>
+                <a class="white-text" href="">Détails</a>
+                <br>
+                <a href="" class="btn white-text deep-purple darken-2">Buy</a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="col-xs-12 prices purple darken-3 text-center white-text">
+                <h2><strong>Enterprise</strong></h2>
+                <p class="medium">Coming 2017</p>
+                <p>Designed for entreprise</p>
+                <a class="white-text" href="">Détails</a>
+                <br>
+                <a href="" class="btn white-text purple darken-2">Buy</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <h1 class="blue-text">Our Customers</h1>
+        <div class="text-center">
+            <a href="https://www.nasa.gov/"><img width="200px" src="{{ asset('images/customersLogos/nasa.png') }}" alt=""></a>
+            <a href="https://www.google.com/"><img width="200px" src="{{ asset('images/customersLogos/google.png') }}" alt=""></a>
+            <a href="http://www.samsung.com/fr/home/"><img width="200px" src="{{ asset('images/customersLogos/supinfo.png') }}" alt=""></a>
+            <a href="http://www.supinfo.com/"><img width="200px" src="{{ asset('images/customersLogos/samsung.svg.png') }}" alt=""></a>
+        </div>
+    </div>
+    </div>
+</div>
+{% block footer %}
+    {{ render(controller("SiteBundle:Default:footer")) }}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/app.min.js') }}"></script>
+    <script type="text/javascript">$.material.init()</script>
+{% endblock %}
+</body>
+</html>
+
+

@@ -6,6 +6,9 @@ body {
   padding-top: 70px;
   min-height: 100%;
 }
+.index {
+  padding-top: 50px;
+}
 .btn-facebook {
   background-color: #3b5998;
 }
