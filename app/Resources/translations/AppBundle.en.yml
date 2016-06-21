@@ -10,19 +10,6 @@ sidebar:
     historic: "History"
     analytics: "Analytics"
 
-newjob:
-    page_h1: "Submit a new job"
-    form:
-        file: "Select file to convert"
-        targetformat: "Target format"
-        submit: "Submit"
-
-listoldjob:
-    page_h1: "Jobs historic"
-    table:
-        button:
-            details: "Details"
-
 job:
     attr:
         id: "Id"
@@ -34,3 +21,14 @@ job:
         video: "Video"
         user: "User"
         finish: "Finish"
+    list:
+        page_title: "History"
+        table:
+            details: "Details"
+    details:
+        page_title:
+    submit:
+        page_title: "Insert your file to transcode"
+        button: "Submit"
+    payment:
+        page_title: "Order summary"

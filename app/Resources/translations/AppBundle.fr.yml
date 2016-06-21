@@ -22,7 +22,7 @@ job:
         user: "Utilisateur"
         finish: "Terminé"
     list:
-        page_title: "Hitorique des travails"
+        page_title: "Historique des travails"
         table:
             details: "Détails"
     details:
